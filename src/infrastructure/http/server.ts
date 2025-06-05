@@ -1,20 +1,30 @@
-import { Express } from "express";
 import "reflect-metadata";
+import express from "express";
 import { AppDataSource } from "../db/data-source";
 import clienteRoutes from "./routes/clienteRoutes";
 import planoRoutes from "./routes/planoRoutes";
 import assinaturaRoutes from "./routes/assinaturaRoutes";
-import "./container";
+import "../container"; // Importa as configurações de DI
 
+/**
+ * Configuração e inicialização do servidor Express
+ */
 const app = express();
-app.use(express.json());
+app.use(express.json()); // Middleware para parse de JSON
 
+// Configuração das rotas
 app.use("/gestao/clientes", clienteRoutes);
 app.use("/gestao/planos", planoRoutes);
 app.use("/gestao/assinaturas", assinaturaRoutes);
 
+// Inicialização do servidor e banco de dados
 AppDataSource.initialize()
-    .then(() => {
-        app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
-    })
-    .catch((error) => console.log("Erro ao conectar ao banco:", error));
+  .then(() => {
+    console.log("Banco de dados inicializado!");
+    app.listen(3000, () => {
+      console.log("Servidor rodando na porta 3000");
+    });
+  })
+  .catch((err) => {
+    console.error("Erro ao inicializar banco de dados", err);
+  });

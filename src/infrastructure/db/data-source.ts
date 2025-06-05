@@ -4,11 +4,16 @@ import { Cliente } from "../../core/entities/Cliente";
 import { Plano } from "../../core/entities/Plano";
 import { Assinatura } from "../../core/entities/Assinatura";
 
-// Configuração do banco de dados
+/**
+ * Configuração da fonte de dados usando SQLite
+ * Centraliza a configuração de acesso ao banco de dados
+ */
 export const AppDataSource = new DataSource({
-    type: "sqlite", // Tipo: SQLite
-    database: "database.sqlite", // Nome do arquivo do banco
-    synchronize: "true", // Automaticamente cria tabelas
-    logging: true,
-    entities: [Cliente, Plano, Assinatura], // Aqui vamos colocar nossas "formas"
+  type: "sqlite",
+  database: "database.sqlite",
+  synchronize: true, // Sincroniza automaticamente o schema (apenas para desenvolvimento)
+  logging: true, // Habilita logging de queries
+  entities: [Cliente, Plano, Assinatura], // Entidades mapeadas
+  subscribers: [],
+  migrations: [],
 });
