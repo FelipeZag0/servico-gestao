@@ -9,7 +9,7 @@ const controller = new PlanoController();
 
 // Endpoint para listar planos
 router.get("/", controller.listar);
-// Endpoint para atualizar custo de um plano
+router.get("/ativos/:id", controller.listarPlanosAtivos); // Nova rota
 router.patch("/:idPlano", controller.atualizarCusto);
 
 export default router;

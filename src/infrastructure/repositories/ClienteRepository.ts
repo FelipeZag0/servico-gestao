@@ -13,3 +13,4 @@ export class ClienteRepository implements IClienteRepository {
     return this.repo.find(); // Busca todos os clientes no banco de dados
   }
 }
+
