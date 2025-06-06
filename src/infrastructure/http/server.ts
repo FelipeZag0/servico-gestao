@@ -13,9 +13,9 @@ const app = express();
 app.use(express.json()); // Middleware para parse de JSON
 
 // Configuração das rotas
-app.use("/gestao/clientes", clienteRoutes);
-app.use("/gestao/planos", planoRoutes);
-app.use("/gestao/assinaturas", assinaturaRoutes);
+app.use("/gerenciaplanos/clientes", clienteRoutes);
+app.use("/gerenciaplanos/planos", planoRoutes);
+app.use("/gerenciaplanos/assinaturas", assinaturaRoutes);
 
 // Inicialização do servidor e banco de dados
 AppDataSource.initialize()

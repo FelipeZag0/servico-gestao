@@ -33,7 +33,7 @@ src/
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/servico-gestao.git
+git clone https://github.com/FelipeZag0/servico-gestao.git
 cd servico-gestao
 ```
 
